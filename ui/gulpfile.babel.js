@@ -49,9 +49,10 @@ gulp.task('clean', cb => {
 
 gulp.task('browserSync', ['serve'], () => {
   const bundler = webpack(config[0]);
+  var wf_host = process.env.WF_HOSTNAME;
   browserSync({
     proxy: {
-      target: 'localhost:5000',
+      target: wf_host + ':5000',
       middleware: [
         webpackDevMiddleware(bundler, {
           publicPath: '/',
